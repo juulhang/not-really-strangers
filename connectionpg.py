@@ -1,8 +1,7 @@
 import random
 from tkinter import *
-from tkinter import ttk
 
-FILENAME='perception.txt'
+FILENAME='connection.txt'
 
 window = Tk()
 choice = ["Level 1: Perception", "Level 2: Connections", "Level 3: Reflection", "Final Card"]
@@ -12,7 +11,7 @@ choice = ["Level 1: Perception", "Level 2: Connections", "Level 3: Reflection", 
 
 class Perception:
     def __init__(self, window):
-        self.l1 = Label(window, font=("Comic Sans MS", 35), text="Level 1: Perception", pady=25, bg='#b81f1f')
+        self.l1 = Label(window, font=("Comic Sans MS", 35), text="Level 2: Connection", pady=25, bg='#b81f1f')
         self.l1.pack()
         self.changelvlB = Button(window, font=("Comic Sans MS", 12), text="Change Level")
         self.changelvlB.place(x=2000, y=25)
@@ -98,7 +97,7 @@ class Perception:
 
 
 #choice = ["Level 1: Perception", "Level 2: Connections", "Level 3: Reflection", "Final Card"]
-'''
+
 variable = StringVar(window)
 variable.set("Select Level")
 
@@ -108,9 +107,8 @@ dropdown = OptionMenu(
     *choice
     )
 dropdown.pack()
-'''
 
-window.title("Level 1: Perception")
+window.title("Level 2: Connection")
 window.geometry("700x500")  # width x height
 # window.config(bg=rgb_hack((255, 0, 122))) # suppose to change background color
 window.config(bg='#b81f1f')

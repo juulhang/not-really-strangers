@@ -1,6 +1,5 @@
 from tkinter import *
 
-
 class mainpg:
     def __init__(self, window):
         self.mainLabel = Label(window,
@@ -18,14 +17,24 @@ class mainpg:
         self.btn1 = Button(window, font=("Comic Sans MS", 17), text="Level 1: Perception", pady=10,
                            command=self.perception)
         self.btn1.pack()
-        self.btn2 = Button(window, font=("Comic Sans MS", 17), text="Level 2: Connection", pady=10)
+        self.btn2 = Button(window, font=("Comic Sans MS", 17), text="Level 2: Connection", pady=10,
+                           command=self.connection)
         self.btn2.pack()
-        self.btn3 = Button(window, font=("Comic Sans MS", 17), text="Level 3: Connection", pady=10)
+        self.btn3 = Button(window, font=("Comic Sans MS", 17), text="Level 3: Refelction", pady=10,
+                           command=self.reflection)
         self.btn3.pack()
 
     def perception(self):
         window.destroy()
         import perceptionpg
+
+    def connection(self):
+        window.destroy()
+        import connectionpg
+
+    def reflection(self):
+        window.destroy()
+        import reflectionpg
 
 
 window = Tk()

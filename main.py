@@ -1,3 +1,4 @@
+'''
 import random
 
 
@@ -68,3 +69,4 @@ def finalCard(fileName):
 
 if "__main__":
     main()
+'''
