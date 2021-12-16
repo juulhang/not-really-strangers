@@ -6,10 +6,7 @@ FILENAME='connection.txt'
 window = Tk()
 choice = ["Level 1: Perception", "Level 2: Connections", "Level 3: Reflection", "Final Card"]
 
-
-
-
-class Perception:
+class Connection:
     def __init__(self, window):
         self.l1 = Label(window, font=("Comic Sans MS", 35), text="Level 2: Connection", pady=25, bg='#b81f1f')
         self.l1.pack()
@@ -79,16 +76,16 @@ class Perception:
         #newLvl = ""
         if variable.get() == choice[0]:
             newLvl="perception"
-            Perception.perception
+            Connection.perception
         elif variable.get() == choice[1]:
             newLvl="connection"
-            Perception.connection
+            Connection.connection
         elif variable.get() == choice[2]:
             newLvl="reflection"
-            Perception.reflection
+            Connection.reflection
         elif variable.get() == choice[3]:
             newLvl="finalCard"
-            Perception.finalCard
+            Connection.finalCard
         #return newLvl
         
         #newQb=Button(window, font=("Comic Sans MS", 12), text="Submit", command=newLvl).pack()
@@ -112,13 +109,13 @@ window.title("Level 2: Connection")
 window.geometry("700x500")  # width x height
 # window.config(bg=rgb_hack((255, 0, 122))) # suppose to change background color
 window.config(bg='#b81f1f')
-window1 = Perception(window)
+window2 = Connection(window)
 
 flag = True
 while flag:
-    q = window1.openFile2()
-    window1.printQ(q)
-    newQb=Button(window, font=("Comic Sans MS", 12), text="New Question", command=window1.openFile2())
+    q = window2.openFile2()
+    window2.printQ(q)
+    newQb=Button(window, font=("Comic Sans MS", 12), text="New Question", command=window2.openFile2())
     #newQb.place(y=-300)
     newQb.pack()
     #lvlSwitch = "window1.".append(window1.submitLevel(variable))

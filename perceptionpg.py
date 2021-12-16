@@ -5,9 +5,7 @@ from tkinter import ttk
 FILENAME='perception.txt'
 
 window = Tk()
-choice = ["Level 1: Perception", "Level 2: Connections", "Level 3: Reflection", "Final Card"]
-
-
+choice = ["Select Level", "Level 1: Perception", "Level 2: Connections", "Level 3: Reflection", "Final Card"]
 
 
 class Perception:
@@ -76,8 +74,9 @@ class Perception:
         window.destroy()
         import finalpg
 
-    def submitLevel(self, variable):
+    def submitLevel(self, e):
         #newLvl = ""
+        '''
         if variable.get() == choice[0]:
             newLvl="perception"
             Perception.perception
@@ -91,11 +90,19 @@ class Perception:
             newLvl="finalCard"
             Perception.finalCard
         #return newLvl
-        
         #newQb=Button(window, font=("Comic Sans MS", 12), text="Submit", command=newLvl).pack()
+        '''
+        if my_combo.get() == choice[1]:
+            Perception.openFile2(self)
+        elif my_combo.get() == choice[2]:
+            Perception.connection(self)
+        elif my_combo.get() == choice[3]:
+            Perception.reflection(self)
+        elif my_combo.get() == choice[4]:
+            Perception.finalCard(self)   
+        else:
+            pass 
     
-
-
 
 #choice = ["Level 1: Perception", "Level 2: Connections", "Level 3: Reflection", "Final Card"]
 '''
@@ -109,12 +116,21 @@ dropdown = OptionMenu(
     )
 dropdown.pack()
 '''
+#my_combo = ttk.Combobox(window, value=choice).pack(padx=200)
 
 window.title("Level 1: Perception")
 window.geometry("700x500")  # width x height
 # window.config(bg=rgb_hack((255, 0, 122))) # suppose to change background color
 window.config(bg='#b81f1f')
 window1 = Perception(window)
+
+# create dropdown menu
+my_combo = ttk.Combobox(window, value=choice)
+my_combo.current(0)
+my_combo.pack()
+
+#bind drop down menu
+my_combo.bind("<<ComboboxSelected>>", window1.submitLevel)
 
 flag = True
 while flag:
