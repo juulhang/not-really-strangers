@@ -1,8 +1,9 @@
 import random
 from tkinter import *
 from tkinter import ttk
+#from tkinter import tk
 
-FILENAME='perception.txt'
+FILENAME='connection.txt'
 
 window = Tk()
 choice = ["Select Level", "Level 1: Perception", "Level 2: Connections", "Level 3: Reflection", "Final Card"]
@@ -10,11 +11,11 @@ choice = ["Select Level", "Level 1: Perception", "Level 2: Connections", "Level 
 
 class Perception:
     def __init__(self, window):
-        self.l1 = Label(window, font=("Comic Sans MS", 35), text="Level 1: Perception", pady=25, bg='#b81f1f')
-        self.l1.pack()
-        self.changelvlB = Button(window, font=("Comic Sans MS", 12), text="Change Level")
-        self.changelvlB.place(x=2000, y=25)
-        self.changelvlB.pack()
+        self.l1 = Label(window, font=("Comic Sans MS", 35), text="Level 1: Perception", pady=25, bg='#b81f1f').pack()
+        self.q = Perception.openFile2(self)
+        self.questionLbl = Label(window, font=("Comic Sans MS", 12), text=self.q, padx=15, pady=25, bg='#b81f1f')
+        self.questionLbl.pack()
+        #self.newQBtn = Button(window,)
 
         '''
         self.choice = ["Level 1: Perception", "Level 2: Connections", "Level 3: Reflection", "Final Card"]
@@ -49,9 +50,8 @@ class Perception:
         '''
 
     def printQ(self, q):
-        question=Label(window, font=("Comic Sans MS", 16), text=q)
+        question=Label(window, font=("Comic Sans MS", 16), text=q, bg="#b81f1f")
         question.pack()
-
 
     def mainpg(self):
         window.destroy()
@@ -74,26 +74,16 @@ class Perception:
         window.destroy()
         import finalpg
 
+    #def newQuestionCmd(self):
+
+
+
     def submitLevel(self, e):
-        #newLvl = ""
-        '''
-        if variable.get() == choice[0]:
-            newLvl="perception"
-            Perception.perception
-        elif variable.get() == choice[1]:
-            newLvl="connection"
-            Perception.connection
-        elif variable.get() == choice[2]:
-            newLvl="reflection"
-            Perception.reflection
-        elif variable.get() == choice[3]:
-            newLvl="finalCard"
-            Perception.finalCard
-        #return newLvl
-        #newQb=Button(window, font=("Comic Sans MS", 12), text="Submit", command=newLvl).pack()
-        '''
         if my_combo.get() == choice[1]:
-            Perception.openFile2(self)
+            newQ = Perception.openFile2(self)
+            self.questionLbl.configure(text=newQ)
+            #self.questionLbl["text"]=newQ
+            #self.questionLbl.set(newQ)
         elif my_combo.get() == choice[2]:
             Perception.connection(self)
         elif my_combo.get() == choice[3]:
@@ -124,6 +114,21 @@ window.geometry("700x500")  # width x height
 window.config(bg='#b81f1f')
 window1 = Perception(window)
 
+#flag = True
+#while flag:
+    #q = window1.openFile2()
+    #window1.printQ(q)
+    #question=Label(window, font=("Comic Sans MS", 16), text=q, bg="#b81f1f")
+    #question.pack()
+    #newQb=Button(window, font=("Comic Sans MS", 12), text="New Question", command=window1.openFile2())
+    #newQb.place(y=-300)
+    #newQb.pack()
+    #lvlSwitch = "window1.".append(window1.submitLevel(variable))
+   #print(lvlSwitch)
+    #switchBtn=Button(window, font=("Comic Sans MS", 12), text="Submit", command=lvlSwitch).pack()
+    #flag=False
+
+l2 = Label(window, font=("Comic Sans MS", 17), text="Change Level", padx=20, pady=10, bg='#b81f1f').pack()
 # create dropdown menu
 my_combo = ttk.Combobox(window, value=choice)
 my_combo.current(0)
@@ -131,18 +136,6 @@ my_combo.pack()
 
 #bind drop down menu
 my_combo.bind("<<ComboboxSelected>>", window1.submitLevel)
-
-flag = True
-while flag:
-    q = window1.openFile2()
-    window1.printQ(q)
-    newQb=Button(window, font=("Comic Sans MS", 12), text="New Question", command=window1.openFile2())
-    #newQb.place(y=-300)
-    newQb.pack()
-    #lvlSwitch = "window1.".append(window1.submitLevel(variable))
-   #print(lvlSwitch)
-    #switchBtn=Button(window, font=("Comic Sans MS", 12), text="Submit", command=lvlSwitch).pack()
-    flag=False
 
 window.mainloop()
 
